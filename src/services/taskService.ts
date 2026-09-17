@@ -1,21 +1,26 @@
 import type { Task } from '../types';
 import { getItem, setItem } from './storage';
 
-const TASKS_KEY = 'tasks';
-
-function getTasks(): Task[] {
-  return getItem<Task[]>(TASKS_KEY) ?? [];
+function tasksKey(userId: string): string {
+  return `tasks:${userId}`;
 }
 
-function saveTasks(tasks: Task[]): void {
-  setItem(TASKS_KEY, tasks);
+function getTasks(userId: string): Task[] {
+  return getItem<Task[]>(tasksKey(userId)) ?? [];
 }
 
-export function fetchTasks(): Task[] {
-  return getTasks();
+function saveTasks(userId: string, tasks: Task[]): void {
+  setItem(tasksKey(userId), tasks);
 }
 
-export function createTask(input: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>): Task {
+export function fetchTasks(userId: string): Task[] {
+  return getTasks(userId);
+}
+
+export function createTask(
+  userId: string,
+  input: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>,
+): Task {
   const now = new Date().toISOString();
 
   const task: Task = {
@@ -25,12 +30,16 @@ export function createTask(input: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>):
     updatedAt: now,
   };
 
-  saveTasks([...getTasks(), task]);
+  saveTasks(userId, [...getTasks(userId), task]);
   return task;
 }
 
-export function updateTask(id: string, updates: Partial<Omit<Task, 'id' | 'createdAt'>>): Task {
-  const tasks = getTasks();
+export function updateTask(
+  userId: string,
+  id: string,
+  updates: Partial<Omit<Task, 'id' | 'createdAt'>>,
+): Task {
+  const tasks = getTasks(userId);
   const index = tasks.findIndex((t) => t.id === id);
 
   if (index === -1) {
@@ -47,18 +56,18 @@ export function updateTask(id: string, updates: Partial<Omit<Task, 'id' | 'creat
 
   const next = [...tasks];
   next[index] = updated;
-  saveTasks(next);
+  saveTasks(userId, next);
 
   return updated;
 }
 
-export function deleteTask(id: string): void {
-  const tasks = getTasks();
+export function deleteTask(userId: string, id: string): void {
+  const tasks = getTasks(userId);
   const next = tasks.filter((t) => t.id !== id);
 
   if (next.length === tasks.length) {
     throw new Error('Task not found.');
   }
 
-  saveTasks(next);
+  saveTasks(userId, next);
 }
