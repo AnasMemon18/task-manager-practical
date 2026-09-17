@@ -33,6 +33,7 @@ export interface TaskFilters {
   dueTo: string | null;
   page: number;
   pageSize: number;
+  view: 'list' | 'board';
 }
 
 export type TaskSortField = 'dueDate' | 'priority' | 'createdAt' | 'title';
