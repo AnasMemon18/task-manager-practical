@@ -31,6 +31,8 @@ export interface TaskFilters {
   priority: TaskPriority | 'All';
   dueFrom: string | null;
   dueTo: string | null;
+  page: number;
+  pageSize: number;
 }
 
 export type TaskSortField = 'dueDate' | 'priority' | 'createdAt' | 'title';
