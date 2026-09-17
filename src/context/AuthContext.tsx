@@ -12,7 +12,7 @@ type AuthAction =
   | { type: 'LOGIN_SUCCESS'; user: User }
   | { type: 'LOGOUT' };
 
-function reducer(state: AuthState, action: AuthAction): AuthState {
+function reducer(_state: AuthState, action: AuthAction): AuthState {
   switch (action.type) {
     case 'INITIALIZED':
       return { user: action.user, initializing: false };
