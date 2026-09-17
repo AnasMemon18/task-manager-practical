@@ -1,4 +1,11 @@
-import { createContext, useReducer, type ReactNode } from 'react';
+import {
+  createContext,
+  useCallback,
+  useReducer,
+  useRef,
+  useEffect,
+  type ReactNode,
+} from 'react';
 import type { Task } from '../types';
 import * as taskService from '../services/taskService';
 
@@ -21,25 +28,19 @@ export function tasksReducer(state: TasksState, action: TasksAction): TasksState
   switch (action.type) {
     case 'LOAD_START':
       return { ...state, loading: true, error: null };
-
     case 'LOAD_SUCCESS':
       return { tasks: action.tasks, loading: false, error: null };
-
     case 'LOAD_ERROR':
       return { ...state, loading: false, error: action.error };
-
     case 'TASK_ADDED':
       return { ...state, tasks: [action.task, ...state.tasks] };
-
     case 'TASK_UPDATED':
       return {
         ...state,
         tasks: state.tasks.map((t) => (t.id === action.task.id ? action.task : t)),
       };
-
     case 'TASK_DELETED':
       return { ...state, tasks: state.tasks.filter((t) => t.id !== action.id) };
-
     case 'ROLLBACK':
       return { ...state, tasks: action.tasks };
   }
@@ -62,7 +63,12 @@ export function TasksProvider({ children }: { children: ReactNode }) {
     error: null,
   });
 
-  function loadTasks(): void {
+  const stateRef = useRef(state);
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
+  const loadTasks = useCallback((): void => {
     dispatch({ type: 'LOAD_START' });
     try {
       const tasks = taskService.fetchTasks();
@@ -70,32 +76,38 @@ export function TasksProvider({ children }: { children: ReactNode }) {
     } catch (err) {
       dispatch({ type: 'LOAD_ERROR', error: (err as Error).message });
     }
-  }
+  }, []);
 
-  function addTask(input: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>): void {
-    const previous = state.tasks;
-    try {
-      const task = taskService.createTask(input);
-      dispatch({ type: 'TASK_ADDED', task });
-    } catch (err) {
-      dispatch({ type: 'ROLLBACK', tasks: previous });
-      throw err;
-    }
-  }
+  const addTask = useCallback(
+    (input: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>): void => {
+      const previous = stateRef.current.tasks;
+      try {
+        const task = taskService.createTask(input);
+        dispatch({ type: 'TASK_ADDED', task });
+      } catch (err) {
+        dispatch({ type: 'ROLLBACK', tasks: previous });
+        throw err;
+      }
+    },
+    [],
+  );
 
-  function editTask(id: string, updates: Partial<Omit<Task, 'id' | 'createdAt'>>): void {
-    const previous = state.tasks;
-    try {
-      const updated = taskService.updateTask(id, updates);
-      dispatch({ type: 'TASK_UPDATED', task: updated });
-    } catch (err) {
-      dispatch({ type: 'ROLLBACK', tasks: previous });
-      throw err;
-    }
-  }
+  const editTask = useCallback(
+    (id: string, updates: Partial<Omit<Task, 'id' | 'createdAt'>>): void => {
+      const previous = stateRef.current.tasks;
+      try {
+        const updated = taskService.updateTask(id, updates);
+        dispatch({ type: 'TASK_UPDATED', task: updated });
+      } catch (err) {
+        dispatch({ type: 'ROLLBACK', tasks: previous });
+        throw err;
+      }
+    },
+    [],
+  );
 
-  function removeTask(id: string): void {
-    const previous = state.tasks;
+  const removeTask = useCallback((id: string): void => {
+    const previous = stateRef.current.tasks;
     dispatch({ type: 'TASK_DELETED', id });
     try {
       taskService.deleteTask(id);
@@ -103,11 +115,14 @@ export function TasksProvider({ children }: { children: ReactNode }) {
       dispatch({ type: 'ROLLBACK', tasks: previous });
       throw err;
     }
-  }
+  }, []);
 
-  function setTaskStatus(id: string, status: Task['status']): void {
-    editTask(id, { status });
-  }
+  const setTaskStatus = useCallback(
+    (id: string, status: Task['status']): void => {
+      editTask(id, { status });
+    },
+    [editTask],
+  );
 
   return (
     <TasksContext.Provider
