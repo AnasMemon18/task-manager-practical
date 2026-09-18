@@ -1,6 +1,6 @@
-import { createContext, useEffect, useReducer, type ReactNode } from 'react';
-import type { AuthSession, User } from '../types';
-import * as authService from '../services/authService';
+import { createContext, useEffect, useReducer, type ReactNode } from "react";
+import type { AuthSession, User } from "../types";
+import * as authService from "../services/authService";
 
 interface AuthState {
   user: User | null;
@@ -8,17 +8,17 @@ interface AuthState {
 }
 
 type AuthAction =
-  | { type: 'INITIALIZED'; user: User | null }
-  | { type: 'LOGIN_SUCCESS'; user: User }
-  | { type: 'LOGOUT' };
+  | { type: "INITIALIZED"; user: User | null }
+  | { type: "LOGIN_SUCCESS"; user: User }
+  | { type: "LOGOUT" };
 
 function reducer(_state: AuthState, action: AuthAction): AuthState {
   switch (action.type) {
-    case 'INITIALIZED':
+    case "INITIALIZED":
       return { user: action.user, initializing: false };
-    case 'LOGIN_SUCCESS':
+    case "LOGIN_SUCCESS":
       return { user: action.user, initializing: false };
-    case 'LOGOUT':
+    case "LOGOUT":
       return { user: null, initializing: false };
   }
 }
@@ -40,22 +40,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // On mount, check localStorage for an existing (unexpired) session.
   useEffect(() => {
     const session: AuthSession | null = authService.getSession();
-    dispatch({ type: 'INITIALIZED', user: session ? session.user : null });
+    dispatch({ type: "INITIALIZED", user: session ? session.user : null });
   }, []);
 
-  async function signup(email: string, password: string, name: string): Promise<void> {
+  async function signup(
+    email: string,
+    password: string,
+    name: string,
+  ): Promise<void> {
     const session = await authService.signup(email, password, name);
-    dispatch({ type: 'LOGIN_SUCCESS', user: session.user });
+    dispatch({ type: "LOGIN_SUCCESS", user: session.user });
   }
 
   async function login(email: string, password: string): Promise<void> {
     const session = await authService.login(email, password);
-    dispatch({ type: 'LOGIN_SUCCESS', user: session.user });
+    dispatch({ type: "LOGIN_SUCCESS", user: session.user });
   }
 
   function logout(): void {
     authService.logout();
-    dispatch({ type: 'LOGOUT' });
+    dispatch({ type: "LOGOUT" });
   }
 
   return (

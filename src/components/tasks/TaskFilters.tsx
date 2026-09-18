@@ -1,26 +1,36 @@
-import { useEffect, useState } from 'react';
-import { Box, Button, MenuItem, TextField } from '@mui/material';
-import type { TaskPriority, TaskSort, TaskStatus } from '../../types';
-import { useDebounce } from '../../hooks/useDebounce';
+import { useEffect, useState } from "react";
+import { Box, Button, MenuItem, TextField } from "@mui/material";
+import type { TaskPriority, TaskSort, TaskStatus } from "../../types";
+import { useDebounce } from "../../hooks/useDebounce";
 
 interface TaskFiltersProps {
   search: string;
-  status: TaskStatus | 'All';
-  priority: TaskPriority | 'All';
+  status: TaskStatus | "All";
+  priority: TaskPriority | "All";
   dueFrom: string | null;
   dueTo: string | null;
   sort: TaskSort;
   hasActiveFilters: boolean;
   onFilterChange: (
-    key: 'search' | 'status' | 'priority' | 'dueFrom' | 'dueTo',
+    key: "search" | "status" | "priority" | "dueFrom" | "dueTo",
     value: string | null,
   ) => void;
   onSortChange: (sort: TaskSort) => void;
   onClear: () => void;
 }
 
-const STATUS_OPTIONS: (TaskStatus | 'All')[] = ['All', 'Todo', 'In Progress', 'Done'];
-const PRIORITY_OPTIONS: (TaskPriority | 'All')[] = ['All', 'Low', 'Medium', 'High'];
+const STATUS_OPTIONS: (TaskStatus | "All")[] = [
+  "All",
+  "Todo",
+  "In Progress",
+  "Done",
+];
+const PRIORITY_OPTIONS: (TaskPriority | "All")[] = [
+  "All",
+  "Low",
+  "Medium",
+  "High",
+];
 
 interface SortOption {
   label: string;
@@ -28,13 +38,25 @@ interface SortOption {
 }
 
 const SORT_OPTIONS: SortOption[] = [
-  { label: 'Newest first', value: { field: 'createdAt', direction: 'desc' } },
-  { label: 'Oldest first', value: { field: 'createdAt', direction: 'asc' } },
-  { label: 'Due date (soonest)', value: { field: 'dueDate', direction: 'asc' } },
-  { label: 'Due date (latest)', value: { field: 'dueDate', direction: 'desc' } },
-  { label: 'Priority (high to low)', value: { field: 'priority', direction: 'desc' } },
-  { label: 'Priority (low to high)', value: { field: 'priority', direction: 'asc' } },
-  { label: 'Title (A–Z)', value: { field: 'title', direction: 'asc' } },
+  { label: "Newest first", value: { field: "createdAt", direction: "desc" } },
+  { label: "Oldest first", value: { field: "createdAt", direction: "asc" } },
+  {
+    label: "Due date (soonest)",
+    value: { field: "dueDate", direction: "asc" },
+  },
+  {
+    label: "Due date (latest)",
+    value: { field: "dueDate", direction: "desc" },
+  },
+  {
+    label: "Priority (high to low)",
+    value: { field: "priority", direction: "desc" },
+  },
+  {
+    label: "Priority (low to high)",
+    value: { field: "priority", direction: "asc" },
+  },
+  { label: "Title (A–Z)", value: { field: "title", direction: "asc" } },
 ];
 
 function sortToKey(sort: TaskSort): string {
@@ -58,7 +80,7 @@ export function TaskFilters({
 
   useEffect(() => {
     if (debouncedSearch !== search) {
-      onFilterChange('search', debouncedSearch);
+      onFilterChange("search", debouncedSearch);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch]);
@@ -77,15 +99,15 @@ export function TaskFilters({
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
+        display: "flex",
+        flexWrap: "wrap",
         gap: 2,
-        alignItems: 'center',
+        alignItems: "center",
         p: 2,
         mb: 3,
-        bgcolor: 'background.paper',
-        border: '1px solid',
-        borderColor: 'divider',
+        bgcolor: "background.paper",
+        border: "1px solid",
+        borderColor: "divider",
         borderRadius: 1,
       }}
     >
@@ -94,7 +116,7 @@ export function TaskFilters({
         placeholder="Search title or description…"
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
-        slotProps={{ htmlInput: { 'aria-label': 'Search tasks' } }}
+        slotProps={{ htmlInput: { "aria-label": "Search tasks" } }}
         sx={{ flexGrow: 1, minWidth: 220 }}
       />
 
@@ -103,7 +125,7 @@ export function TaskFilters({
         select
         label="Status"
         value={status}
-        onChange={(e) => onFilterChange('status', e.target.value)}
+        onChange={(e) => onFilterChange("status", e.target.value)}
         sx={{ minWidth: 140 }}
       >
         {STATUS_OPTIONS.map((s) => (
@@ -118,7 +140,7 @@ export function TaskFilters({
         select
         label="Priority"
         value={priority}
-        onChange={(e) => onFilterChange('priority', e.target.value)}
+        onChange={(e) => onFilterChange("priority", e.target.value)}
         sx={{ minWidth: 140 }}
       >
         {PRIORITY_OPTIONS.map((p) => (
@@ -132,8 +154,8 @@ export function TaskFilters({
         size="small"
         label="Due from"
         type="date"
-        value={dueFrom ?? ''}
-        onChange={(e) => onFilterChange('dueFrom', e.target.value || null)}
+        value={dueFrom ?? ""}
+        onChange={(e) => onFilterChange("dueFrom", e.target.value || null)}
         slotProps={{ inputLabel: { shrink: true } }}
         sx={{ minWidth: 160 }}
       />
@@ -142,8 +164,8 @@ export function TaskFilters({
         size="small"
         label="Due to"
         type="date"
-        value={dueTo ?? ''}
-        onChange={(e) => onFilterChange('dueTo', e.target.value || null)}
+        value={dueTo ?? ""}
+        onChange={(e) => onFilterChange("dueTo", e.target.value || null)}
         slotProps={{ inputLabel: { shrink: true } }}
         sx={{ minWidth: 160 }}
       />
@@ -164,7 +186,7 @@ export function TaskFilters({
       </TextField>
 
       {hasActiveFilters && (
-        <Button size="small" onClick={onClear} sx={{ ml: 'auto' }}>
+        <Button size="small" onClick={onClear} sx={{ ml: "auto" }}>
           Clear all
         </Button>
       )}

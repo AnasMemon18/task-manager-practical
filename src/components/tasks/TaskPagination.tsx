@@ -1,6 +1,12 @@
-import { Box, IconButton, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import {
+  Box,
+  IconButton,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 interface TaskPaginationProps {
   page: number;
@@ -30,26 +36,27 @@ export function TaskPagination({
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
+        display: "flex",
+        flexWrap: "wrap",
         gap: 2,
-        alignItems: 'center',
-        justifyContent: 'space-between',
+        alignItems: "center",
+        justifyContent: "space-between",
         mt: 3,
         p: 2,
-        bgcolor: 'background.paper',
-        border: '1px solid',
-        borderColor: 'divider',
+        bgcolor: "background.paper",
+        border: "1px solid",
+        borderColor: "divider",
         borderRadius: 1,
       }}
     >
       <Typography variant="body2" color="text.secondary">
-        Showing {start}–{end} of {totalFiltered} {totalFiltered === 1 ? 'task' : 'tasks'}
+        Showing {start}–{end} of {totalFiltered}{" "}
+        {totalFiltered === 1 ? "task" : "tasks"}
       </Typography>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
         {totalPages > 1 && (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
             <IconButton
               size="small"
               onClick={() => onPageChange(page - 1)}
@@ -59,7 +66,10 @@ export function TaskPagination({
               <ChevronLeftIcon fontSize="small" />
             </IconButton>
 
-            <Typography variant="body2" sx={{ minWidth: 90, textAlign: 'center' }}>
+            <Typography
+              variant="body2"
+              sx={{ minWidth: 90, textAlign: "center" }}
+            >
               Page {page} of {totalPages}
             </Typography>
 
@@ -74,7 +84,7 @@ export function TaskPagination({
           </Box>
         )}
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography variant="caption" color="text.secondary">
             Per page
           </Typography>
@@ -88,7 +98,11 @@ export function TaskPagination({
             aria-label="Tasks per page"
           >
             {PAGE_SIZE_OPTIONS.map((size) => (
-              <ToggleButton key={size} value={size} aria-label={`${size} per page`}>
+              <ToggleButton
+                key={size}
+                value={size}
+                aria-label={`${size} per page`}
+              >
                 {size}
               </ToggleButton>
             ))}

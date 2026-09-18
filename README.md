@@ -8,17 +8,17 @@ A single-page task manager built with React, TypeScript, and Material UI. Featur
 
 ## Tech Stack
 
-| Layer | Choice | Why |
-|---|---|---|
-| Build tool | **Vite** | Fast dev server, TS-first, minimal config. |
-| Language | **TypeScript (strict)** | `noImplicitAny`, `noUnusedLocals`, `noUncheckedIndexedAccess` all on. |
-| UI | **Material UI v7** | Responsive components, accessibility defaults, theme system. |
-| Forms | **React Hook Form + Zod** | Uncontrolled inputs (no re-render per keystroke); Zod schema is the single source of truth for validation and types via `z.infer`. |
-| State | **React Context + useReducer** | Scope is small enough that Context is sufficient. Reducers are pure and testable. |
-| Routing | **React Router v7** | Standard, supports layout routes for auth guards. |
-| Drag & Drop | **@dnd-kit** | Modern, TypeScript-first, keyboard-accessible. |
-| Testing | **Jest + React Testing Library** | Standard for React; RTL encourages tests that mirror user behavior. |
-| Lint / Format | **ESLint + Prettier** | Enforced via scripts; no unformatted code lands. |
+| Layer         | Choice                           | Why                                                                                                                                |
+| ------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Build tool    | **Vite**                         | Fast dev server, TS-first, minimal config.                                                                                         |
+| Language      | **TypeScript (strict)**          | `noImplicitAny`, `noUnusedLocals`, `noUncheckedIndexedAccess` all on.                                                              |
+| UI            | **Material UI v7**               | Responsive components, accessibility defaults, theme system.                                                                       |
+| Forms         | **React Hook Form + Zod**        | Uncontrolled inputs (no re-render per keystroke); Zod schema is the single source of truth for validation and types via `z.infer`. |
+| State         | **React Context + useReducer**   | Scope is small enough that Context is sufficient. Reducers are pure and testable.                                                  |
+| Routing       | **React Router v7**              | Standard, supports layout routes for auth guards.                                                                                  |
+| Drag & Drop   | **@dnd-kit**                     | Modern, TypeScript-first, keyboard-accessible.                                                                                     |
+| Testing       | **Jest + React Testing Library** | Standard for React; RTL encourages tests that mirror user behavior.                                                                |
+| Lint / Format | **ESLint + Prettier**            | Enforced via scripts; no unformatted code lands.                                                                                   |
 
 ---
 
@@ -127,3 +127,4 @@ Overdue is a derived flag, not a status. Done tasks are never overdue. We comput
 Droppable IDs = status strings. useDroppable({ id: 'In Progress' }). So onDragEnd gets the new status directly from over.id, with no lookup table.
 
 Debounced search input with URL round-trip. The search field holds local state so typing feels instant; a 300ms debounce pushes to the URL. A second effect syncs URL → input, so Clear-all and browser back work correctly.
+```

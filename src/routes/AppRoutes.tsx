@@ -1,9 +1,9 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { ProtectedRoute } from '../components/auth/ProtectedRoute';
-import { PublicOnlyRoute } from '../components/auth/PublicOnlyRoute';
-import { LoginPage } from '../pages/LoginPage';
-import { SignupPage } from '../pages/SignupPage';
-import { TasksPage } from '../pages/TasksPage';
+import { Navigate, Route, Routes } from "react-router-dom";
+import { ProtectedRoute } from "../components/auth/ProtectedRoute";
+import { PublicOnlyRoute } from "../components/auth/PublicOnlyRoute";
+import { LoginPage } from "../pages/LoginPage";
+import { SignupPage } from "../pages/SignupPage";
+import { TasksPage } from "../pages/TasksPage";
 
 export function AppRoutes() {
   return (

@@ -1,6 +1,6 @@
-import { Navigate, Outlet } from 'react-router-dom';
-import { Box, CircularProgress } from '@mui/material';
-import { useAuth } from '../../hooks/useAuth';
+import { Navigate, Outlet } from "react-router-dom";
+import { Box, CircularProgress } from "@mui/material";
+import { useAuth } from "../../hooks/useAuth";
 
 export function ProtectedRoute() {
   const { user, initializing } = useAuth();
@@ -9,10 +9,10 @@ export function ProtectedRoute() {
     return (
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
         }}
       >
         <CircularProgress />

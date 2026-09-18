@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Button,
   Dialog,
@@ -10,30 +10,36 @@ import {
   MenuItem,
   Stack,
   TextField,
-} from '@mui/material';
-import { taskSchema, type TaskFormValues } from '../../utils/validation';
-import type { Task } from '../../types';
+} from "@mui/material";
+import { taskSchema, type TaskFormValues } from "../../utils/validation";
+import type { Task } from "../../types";
 
 interface TaskFormProps {
   open: boolean;
-  mode: 'create' | 'edit';
+  mode: "create" | "edit";
   task?: Task;
   onSubmit: (values: TaskFormValues) => void;
   onClose: () => void;
 }
 
-const STATUS_OPTIONS: Task['status'][] = ['Todo', 'In Progress', 'Done'];
-const PRIORITY_OPTIONS: Task['priority'][] = ['Low', 'Medium', 'High'];
+const STATUS_OPTIONS: Task["status"][] = ["Todo", "In Progress", "Done"];
+const PRIORITY_OPTIONS: Task["priority"][] = ["Low", "Medium", "High"];
 
 const EMPTY_VALUES: TaskFormValues = {
-  title: '',
-  description: '',
-  status: 'Todo',
-  priority: 'Medium',
-  dueDate: '',
+  title: "",
+  description: "",
+  status: "Todo",
+  priority: "Medium",
+  dueDate: "",
 };
 
-export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps) {
+export function TaskForm({
+  open,
+  mode,
+  task,
+  onSubmit,
+  onClose,
+}: TaskFormProps) {
   const {
     register,
     handleSubmit,
@@ -46,7 +52,7 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
 
   useEffect(() => {
     if (open) {
-      if (mode === 'edit' && task) {
+      if (mode === "edit" && task) {
         reset({
           title: task.title,
           description: task.description,
@@ -64,8 +70,8 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
     onSubmit(values);
   }
 
-  const dialogTitle = mode === 'edit' ? 'Edit task' : 'New task';
-  const submitLabel = mode === 'edit' ? 'Save changes' : 'Create task';
+  const dialogTitle = mode === "edit" ? "Edit task" : "New task";
+  const submitLabel = mode === "edit" ? "Save changes" : "Create task";
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
@@ -78,7 +84,7 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
               label="Title"
               autoFocus
               fullWidth
-              {...register('title')}
+              {...register("title")}
               error={!!errors.title}
               helperText={errors.title?.message}
             />
@@ -89,7 +95,7 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
               minRows={3}
               maxRows={6}
               fullWidth
-              {...register('description')}
+              {...register("description")}
               error={!!errors.description}
               helperText={errors.description?.message}
             />
@@ -98,7 +104,7 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
               select
               label="Status"
               fullWidth
-              {...register('status')}
+              {...register("status")}
               error={!!errors.status}
               helperText={errors.status?.message}
             >
@@ -113,7 +119,7 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
               select
               label="Priority"
               fullWidth
-              {...register('priority')}
+              {...register("priority")}
               error={!!errors.priority}
               helperText={errors.priority?.message}
             >
@@ -125,14 +131,14 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
             </TextField>
 
             <TextField
-  label="Due date"
-  type="date"
-  fullWidth
-  slotProps={{ inputLabel: { shrink: true } }}
-  {...register('dueDate')}
-  error={!!errors.dueDate}
-  helperText={errors.dueDate?.message}
-/>
+              label="Due date"
+              type="date"
+              fullWidth
+              slotProps={{ inputLabel: { shrink: true } }}
+              {...register("dueDate")}
+              error={!!errors.dueDate}
+              helperText={errors.dueDate?.message}
+            />
           </Stack>
         </DialogContent>
 
@@ -141,7 +147,7 @@ export function TaskForm({ open, mode, task, onSubmit, onClose }: TaskFormProps)
             Cancel
           </Button>
           <Button type="submit" variant="contained" disabled={isSubmitting}>
-            {isSubmitting ? 'Saving…' : submitLabel}
+            {isSubmitting ? "Saving…" : submitLabel}
           </Button>
         </DialogActions>
       </form>

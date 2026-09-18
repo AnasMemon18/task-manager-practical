@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import type { Task, TaskFilters, TaskSort } from '../types';
+import { useMemo } from "react";
+import type { Task, TaskFilters, TaskSort } from "../types";
 
 interface UseFilteredTasksResult {
   pageTasks: Task[];
@@ -18,12 +18,16 @@ export function useFilteredTasks(
     const filtered = tasks.filter((task) => {
       if (search) {
         const matchesTitle = task.title.toLowerCase().includes(search);
-        const matchesDescription = task.description.toLowerCase().includes(search);
+        const matchesDescription = task.description
+          .toLowerCase()
+          .includes(search);
         if (!matchesTitle && !matchesDescription) return false;
       }
 
-      if (filters.status !== 'All' && task.status !== filters.status) return false;
-      if (filters.priority !== 'All' && task.priority !== filters.priority) return false;
+      if (filters.status !== "All" && task.status !== filters.status)
+        return false;
+      if (filters.priority !== "All" && task.priority !== filters.priority)
+        return false;
 
       if (filters.dueFrom && task.dueDate < filters.dueFrom) return false;
       if (filters.dueTo && task.dueDate > filters.dueTo) return false;
@@ -44,26 +48,26 @@ export function useFilteredTasks(
   }, [tasks, filters, sort]);
 }
 
-const PRIORITY_ORDER: Record<Task['priority'], number> = {
+const PRIORITY_ORDER: Record<Task["priority"], number> = {
   High: 3,
   Medium: 2,
   Low: 1,
 };
 
 function compareTasks(a: Task, b: Task, sort: TaskSort): number {
-  const dir = sort.direction === 'asc' ? 1 : -1;
+  const dir = sort.direction === "asc" ? 1 : -1;
 
   switch (sort.field) {
-    case 'dueDate':
+    case "dueDate":
       return a.dueDate.localeCompare(b.dueDate) * dir;
 
-    case 'priority':
+    case "priority":
       return (PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority]) * dir;
 
-    case 'title':
+    case "title":
       return a.title.localeCompare(b.title) * dir;
 
-    case 'createdAt':
+    case "createdAt":
       return a.createdAt.localeCompare(b.createdAt) * dir;
   }
 }

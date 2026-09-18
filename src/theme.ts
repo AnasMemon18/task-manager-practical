@@ -1,26 +1,26 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     primary: {
-      main: '#4f46e5',
+      main: "#4f46e5",
     },
     secondary: {
-      main: '#0ea5e9',
+      main: "#0ea5e9",
     },
     background: {
-      default: '#f8fafc',
-      paper: '#ffffff',
+      default: "#f8fafc",
+      paper: "#ffffff",
     },
     success: {
-      main: '#16a34a',
+      main: "#16a34a",
     },
     warning: {
-      main: '#d97706',
+      main: "#d97706",
     },
     error: {
-      main: '#dc2626',
+      main: "#dc2626",
     },
   },
   shape: {
@@ -39,7 +39,7 @@ export const theme = createTheme({
       fontWeight: 600,
     },
     button: {
-      textTransform: 'none',
+      textTransform: "none",
       fontWeight: 500,
     },
   },

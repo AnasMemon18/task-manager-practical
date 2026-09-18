@@ -1,12 +1,19 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Alert, Button, IconButton, InputAdornment, Stack, TextField } from '@mui/material';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useNavigate } from 'react-router-dom';
-import { signupSchema, type SignupFormValues } from '../../utils/validation';
-import { useAuth } from '../../hooks/useAuth';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Alert,
+  Button,
+  IconButton,
+  InputAdornment,
+  Stack,
+  TextField,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
+import { signupSchema, type SignupFormValues } from "../../utils/validation";
+import { useAuth } from "../../hooks/useAuth";
 
 export function SignupForm() {
   const { signup } = useAuth();
@@ -20,16 +27,16 @@ export function SignupForm() {
     formState: { errors, isSubmitting },
   } = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
-    defaultValues: { name: '', email: '', password: '' },
+    defaultValues: { name: "", email: "", password: "" },
   });
 
   async function onSubmit(values: SignupFormValues): Promise<void> {
     setSubmitError(null);
     try {
       await signup(values.email, values.password, values.name);
-      navigate('/tasks', { replace: true });
+      navigate("/tasks", { replace: true });
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : 'Signup failed.');
+      setSubmitError(err instanceof Error ? err.message : "Signup failed.");
     }
   }
 
@@ -43,7 +50,7 @@ export function SignupForm() {
           type="text"
           autoComplete="name"
           fullWidth
-          {...register('name')}
+          {...register("name")}
           error={!!errors.name}
           helperText={errors.name?.message}
         />
@@ -53,17 +60,17 @@ export function SignupForm() {
           type="email"
           autoComplete="email"
           fullWidth
-          {...register('email')}
+          {...register("email")}
           error={!!errors.email}
           helperText={errors.email?.message}
         />
 
         <TextField
           label="Password"
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           autoComplete="new-password"
           fullWidth
-          {...register('password')}
+          {...register("password")}
           error={!!errors.password}
           helperText={errors.password?.message}
           slotProps={{
@@ -71,7 +78,9 @@ export function SignupForm() {
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
-                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     onClick={() => setShowPassword((v) => !v)}
                     edge="end"
                   >
@@ -90,7 +99,7 @@ export function SignupForm() {
           fullWidth
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Creating account…' : 'Create account'}
+          {isSubmitting ? "Creating account…" : "Create account"}
         </Button>
       </Stack>
     </form>

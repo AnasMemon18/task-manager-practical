@@ -1,5 +1,5 @@
-import type { Task } from '../types';
-import { getItem, setItem } from './storage';
+import type { Task } from "../types";
+import { getItem, setItem } from "./storage";
 
 function tasksKey(userId: string): string {
   return `tasks:${userId}`;
@@ -19,7 +19,7 @@ export function fetchTasks(userId: string): Task[] {
 
 export function createTask(
   userId: string,
-  input: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>,
+  input: Omit<Task, "id" | "createdAt" | "updatedAt">,
 ): Task {
   const now = new Date().toISOString();
 
@@ -37,13 +37,13 @@ export function createTask(
 export function updateTask(
   userId: string,
   id: string,
-  updates: Partial<Omit<Task, 'id' | 'createdAt'>>,
+  updates: Partial<Omit<Task, "id" | "createdAt">>,
 ): Task {
   const tasks = getTasks(userId);
   const index = tasks.findIndex((t) => t.id === id);
 
   if (index === -1) {
-    throw new Error('Task not found.');
+    throw new Error("Task not found.");
   }
 
   const existing = tasks[index]!;
@@ -66,7 +66,7 @@ export function deleteTask(userId: string, id: string): void {
   const next = tasks.filter((t) => t.id !== id);
 
   if (next.length === tasks.length) {
-    throw new Error('Task not found.');
+    throw new Error("Task not found.");
   }
 
   saveTasks(userId, next);

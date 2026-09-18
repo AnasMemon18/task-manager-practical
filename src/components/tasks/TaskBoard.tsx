@@ -5,10 +5,10 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
-} from '@dnd-kit/core';
-import { Grid } from '@mui/material';
-import type { Task, TaskStatus } from '../../types';
-import { TaskColumn } from './TaskColumn';
+} from "@dnd-kit/core";
+import { Grid } from "@mui/material";
+import type { Task, TaskStatus } from "../../types";
+import { TaskColumn } from "./TaskColumn";
 
 interface TaskBoardProps {
   tasks: Task[];
@@ -17,9 +17,14 @@ interface TaskBoardProps {
   onStatusChange: (id: string, status: TaskStatus) => void;
 }
 
-const COLUMNS: TaskStatus[] = ['Todo', 'In Progress', 'Done'];
+const COLUMNS: TaskStatus[] = ["Todo", "In Progress", "Done"];
 
-export function TaskBoard({ tasks, onEdit, onDelete, onStatusChange }: TaskBoardProps) {
+export function TaskBoard({
+  tasks,
+  onEdit,
+  onDelete,
+  onStatusChange,
+}: TaskBoardProps) {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: { distance: 8 },
