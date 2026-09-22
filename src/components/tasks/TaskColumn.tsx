@@ -2,6 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { Box, Paper, Typography } from "@mui/material";
 import type { Task, TaskStatus } from "../../types";
 import { DraggableTaskCard } from "./DraggableTaskCard";
+import { useTranslation } from 'react-i18next';
 
 interface TaskColumnProps {
   status: TaskStatus;
@@ -16,6 +17,7 @@ export function TaskColumn({
   onEdit,
   onDelete,
 }: TaskColumnProps) {
+  const { t } = useTranslation();
   const { setNodeRef, isOver } = useDroppable({
     id: status,
   });
@@ -71,7 +73,7 @@ export function TaskColumn({
             py: 4,
           }}
         >
-          Drop a task here
+          {t('common.dropTaskHere')}
         </Box>
       )}
     </Paper>

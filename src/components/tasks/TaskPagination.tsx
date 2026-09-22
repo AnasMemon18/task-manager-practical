@@ -1,12 +1,7 @@
-import {
-  Box,
-  IconButton,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/material";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Box, IconButton, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useTranslation } from 'react-i18next';
 
 interface TaskPaginationProps {
   page: number;
@@ -27,66 +22,71 @@ export function TaskPagination({
   onPageChange,
   onPageSizeChange,
 }: TaskPaginationProps) {
+  const { t } = useTranslation();
+
   const start = totalFiltered === 0 ? 0 : (page - 1) * pageSize + 1;
   const end = Math.min(page * pageSize, totalFiltered);
 
   const canGoPrev = page > 1;
   const canGoNext = page < totalPages;
 
+  const unitKey = totalFiltered === 1 ? 'pagination.taskSingular' : 'pagination.taskPlural';
+
   return (
     <Box
       sx={{
-        display: "flex",
-        flexWrap: "wrap",
+        display: 'flex',
+        flexWrap: 'wrap',
         gap: 2,
-        alignItems: "center",
-        justifyContent: "space-between",
+        alignItems: 'center',
+        justifyContent: 'space-between',
         mt: 3,
         p: 2,
-        bgcolor: "background.paper",
-        border: "1px solid",
-        borderColor: "divider",
+        bgcolor: 'background.paper',
+        border: '1px solid',
+        borderColor: 'divider',
         borderRadius: 1,
       }}
     >
       <Typography variant="body2" color="text.secondary">
-        Showing {start}–{end} of {totalFiltered}{" "}
-        {totalFiltered === 1 ? "task" : "tasks"}
+        {t('pagination.showing', {
+          start,
+          end,
+          total: totalFiltered,
+          unit: t(unitKey),
+        })}
       </Typography>
 
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         {totalPages > 1 && (
-          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
             <IconButton
               size="small"
               onClick={() => onPageChange(page - 1)}
               disabled={!canGoPrev}
-              aria-label="Previous page"
+              aria-label={t('pagination.previousPage')}
             >
               <ChevronLeftIcon fontSize="small" />
             </IconButton>
 
-            <Typography
-              variant="body2"
-              sx={{ minWidth: 90, textAlign: "center" }}
-            >
-              Page {page} of {totalPages}
+            <Typography variant="body2" sx={{ minWidth: 90, textAlign: 'center' }}>
+              {t('pagination.pageIndicator', { page, totalPages })}
             </Typography>
 
             <IconButton
               size="small"
               onClick={() => onPageChange(page + 1)}
               disabled={!canGoNext}
-              aria-label="Next page"
+              aria-label={t('pagination.nextPage')}
             >
               <ChevronRightIcon fontSize="small" />
             </IconButton>
           </Box>
         )}
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Typography variant="caption" color="text.secondary">
-            Per page
+            {t('pagination.perPage')}
           </Typography>
           <ToggleButtonGroup
             value={pageSize}
@@ -95,13 +95,13 @@ export function TaskPagination({
               if (next !== null) onPageSizeChange(next);
             }}
             size="small"
-            aria-label="Tasks per page"
+            aria-label={t('pagination.perPage')}
           >
             {PAGE_SIZE_OPTIONS.map((size) => (
               <ToggleButton
                 key={size}
                 value={size}
-                aria-label={`${size} per page`}
+                aria-label={t('pagination.perPageOption', { size })}
               >
                 {size}
               </ToggleButton>

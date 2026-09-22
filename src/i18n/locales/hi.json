@@ -36,5 +36,85 @@
       "errorPasswordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
       "errorGeneric": "साइनअप विफल रहा।"
     }
-  }
+  },
+  "tasks": {
+    "appTitle": "कार्य प्रबंधक",
+    "pageTitle": "कार्य",
+    "logout": "लॉग आउट",
+    "newTask": "नया कार्य",
+    "viewList": "सूची",
+    "viewBoard": "बोर्ड",
+    "noTasksTitle": "अभी कोई कार्य नहीं",
+    "noTasksDescription": "अपना पहला कार्य बनाने के लिए ऊपर-दाएँ कोने में “नया कार्य” बटन पर क्लिक करें।",
+    "noMatchesTitle": "कोई मेल खाता कार्य नहीं",
+    "noMatchesDescription": "अधिक परिणाम देखने के लिए फ़िल्टर समायोजित करें या साफ़ करें।"
+  },
+  "taskForm": {
+    "createTitle": "नया कार्य",
+    "editTitle": "कार्य संपादित करें",
+    "title": "शीर्षक",
+    "description": "विवरण",
+    "status": "स्थिति",
+    "priority": "प्राथमिकता",
+    "dueDate": "नियत तिथि",
+    "cancel": "रद्द करें",
+    "create": "कार्य बनाएँ",
+    "save": "परिवर्तन सहेजें",
+    "saving": "सहेजा जा रहा है…",
+    "errorTitleRequired": "शीर्षक आवश्यक है",
+    "errorTitleTooLong": "शीर्षक बहुत लंबा है",
+    "errorDescriptionTooLong": "विवरण बहुत लंबा है",
+    "errorDueDateRequired": "नियत तिथि आवश्यक है",
+    "errorDueDatePast": "नियत तिथि अतीत में नहीं हो सकती"
+  },
+  "filters": {
+  "search": "शीर्षक या विवरण खोजें…",
+  "status": "स्थिति",
+  "statusAll": "सभी",
+  "priority": "प्राथमिकता",
+  "priorityAll": "सभी",
+  "dueFrom": "नियत तिथि से",
+  "dueTo": "नियत तिथि तक",
+  "sortBy": "इसके अनुसार क्रमबद्ध करें",
+  "sortNewestFirst": "नवीनतम पहले",
+  "sortOldestFirst": "सबसे पुराने पहले",
+  "sortDueSoonest": "नियत तिथि (जल्द से जल्द)",
+  "sortDueLatest": "नियत तिथि (सबसे बाद में)",
+  "sortPriorityHigh": "प्राथमिकता (उच्च से निम्न)",
+  "sortPriorityLow": "प्राथमिकता (निम्न से उच्च)",
+  "sortTitleAZ": "शीर्षक (A–Z)",
+  "clearAll": "सभी साफ़ करें",
+  "searchAriaLabel": "कार्य खोजें"
+},
+"pagination": {
+  "showing": "{{total}} {{unit}} में से {{start}}–{{end}} दिखा रहे हैं",
+  "taskSingular": "कार्य",
+  "taskPlural": "कार्य",
+  "previousPage": "पिछला पृष्ठ",
+  "nextPage": "अगला पृष्ठ",
+  "pageIndicator": "पृष्ठ {{page}} / {{totalPages}}",
+  "perPage": "प्रति पृष्ठ",
+  "perPageOption": "{{size}} प्रति पृष्ठ"
+},
+"taskCard": {
+  "overdue": "विलंबित — {{date}}",
+  "due": "देय {{date}}",
+  "editTooltip": "संपादित करें",
+  "deleteTooltip": "हटाएँ",
+  "editAria": "कार्य संपादित करें: {{title}}",
+  "deleteAria": "कार्य हटाएँ: {{title}}",
+  "priorityLabel": "{{priority}} प्राथमिकता"
+},
+"confirmDialog": {
+  "deleteTitle": "इस कार्य को हटाएँ?",
+  "deleteMessage": "\"{{title}}\" स्थायी रूप से हटा दिया जाएगा।",
+  "confirmDelete": "हटाएँ",
+  "cancel": "रद्द करें"
+},
+"common": {
+  "loading": "लोड हो रहा है…",
+  "errorTitle": "कुछ गलत हो गया",
+  "retry": "पुनः प्रयास करें",
+  "dropTaskHere": "यहाँ कार्य छोड़ें"
+}
 }

@@ -1,4 +1,5 @@
-import { Alert, AlertTitle, Box, Button } from "@mui/material";
+import { Alert, AlertTitle, Box, Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 interface ErrorStateProps {
   message: string;
@@ -6,6 +7,8 @@ interface ErrorStateProps {
 }
 
 export function ErrorState({ message, onRetry }: ErrorStateProps) {
+  const { t } = useTranslation();
+
   return (
     <Box sx={{ py: 4 }}>
       <Alert
@@ -13,12 +16,12 @@ export function ErrorState({ message, onRetry }: ErrorStateProps) {
         action={
           onRetry ? (
             <Button color="inherit" size="small" onClick={onRetry}>
-              Retry
+              {t('common.retry')}
             </Button>
           ) : undefined
         }
       >
-        <AlertTitle>Something went wrong</AlertTitle>
+        <AlertTitle>{t('common.errorTitle')}</AlertTitle>
         {message}
       </Alert>
     </Box>

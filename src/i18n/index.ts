@@ -4,10 +4,14 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import en from './locales/en.json';
 import hi from './locales/hi.json';
+import es from './locales/es.json';
+import gu from './locales/gu.json';
 
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English' },
   { code: 'hi', label: 'हिन्दी' },
+  { code: 'es', label: 'Español' },
+  { code: 'gu', label: 'ગુજરાતી' }
 ] as const;
 
 export type LanguageCode = (typeof SUPPORTED_LANGUAGES)[number]['code'];
@@ -19,6 +23,8 @@ i18n
     resources: {
       en: { translation: en },
       hi: { translation: hi },
+      es: { translation: es },
+      gu: { translation: gu },
     },
     fallbackLng: 'en',
     supportedLngs: SUPPORTED_LANGUAGES.map((l) => l.code),

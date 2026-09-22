@@ -36,5 +36,87 @@
       "errorPasswordTooShort": "Password must be at least 6 characters",
       "errorGeneric": "Signup failed."
     }
-  }
+  },
+  "tasks": {
+    "appTitle": "Task Manager",
+    "pageTitle": "Tasks",
+    "logout": "Log out",
+    "newTask": "New Task",
+    "viewList": "List",
+    "viewBoard": "Board",
+    "noTasksTitle": "No tasks yet",
+    "noTasksDescription": "Click the “New Task” button in the top-right corner to create your first task.",
+    "noMatchesTitle": "No matching tasks",
+    "noMatchesDescription": "Try adjusting or clearing your filters to see more results."
+  },
+  "taskForm": {
+    "createTitle": "New task",
+    "editTitle": "Edit task",
+    "title": "Title",
+    "description": "Description",
+    "status": "Status",
+    "priority": "Priority",
+    "dueDate": "Due date",
+    "cancel": "Cancel",
+    "create": "Create task",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "errorTitleRequired": "Title is required",
+    "errorTitleTooLong": "Title is too long",
+    "errorDescriptionTooLong": "Description is too long",
+    "errorDueDateRequired": "Due date is required",
+    "errorDueDatePast": "Due date cannot be in the past"
+  },
+
+  "filters": {
+  "search": "Search title or description…",
+  "status": "Status",
+  "statusAll": "All",
+  "priority": "Priority",
+  "priorityAll": "All",
+  "dueFrom": "Due from",
+  "dueTo": "Due to",
+  "sortBy": "Sort by",
+  "sortNewestFirst": "Newest first",
+  "sortOldestFirst": "Oldest first",
+  "sortDueSoonest": "Due date (soonest)",
+  "sortDueLatest": "Due date (latest)",
+  "sortPriorityHigh": "Priority (high to low)",
+  "sortPriorityLow": "Priority (low to high)",
+  "sortTitleAZ": "Title (A–Z)",
+  "clearAll": "Clear all",
+  "searchAriaLabel": "Search tasks"
+},
+
+"pagination": {
+  "showing": "Showing {{start}}–{{end}} of {{total}} {{unit}}",
+  "taskSingular": "task",
+  "taskPlural": "tasks",
+  "previousPage": "Previous page",
+  "nextPage": "Next page",
+  "pageIndicator": "Page {{page}} of {{totalPages}}",
+  "perPage": "Per page",
+  "perPageOption": "{{size}} per page"
+},
+"taskCard": {
+  "overdue": "Overdue — {{date}}",
+  "due": "Due {{date}}",
+  "editTooltip": "Edit",
+  "deleteTooltip": "Delete",
+  "editAria": "Edit task: {{title}}",
+  "deleteAria": "Delete task: {{title}}",
+  "priorityLabel": "{{priority}} priority"
+},
+"confirmDialog": {
+  "deleteTitle": "Delete this task?",
+  "deleteMessage": "\"{{title}}\" will be permanently deleted.",
+  "confirmDelete": "Delete",
+  "cancel": "Cancel"
+},
+"common": {
+  "loading": "Loading…",
+  "errorTitle": "Something went wrong",
+  "retry": "Retry",
+  "dropTaskHere": "Drop a task here"
+}
 }

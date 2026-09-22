@@ -12,6 +12,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks/useAuth";
 import { useTasks } from "../hooks/useTasks";
 import { useUrlFilters } from "../hooks/useUrlFilters";
@@ -25,6 +26,7 @@ import { LoadingState } from "../components/ui/LoadingState";
 import { EmptyState } from "../components/ui/EmptyState";
 import { ErrorState } from "../components/ui/ErrorState";
 import { ConfirmDialog } from "../components/ui/ConfirmDialog";
+import { LanguageSwitcher } from "../components/ui/LanguageSwitcher";
 import type { Task, TaskSort } from "../types";
 import type { TaskFormValues } from "../utils/validation";
 
@@ -36,6 +38,7 @@ type FormState =
 const DEFAULT_SORT: TaskSort = { field: "createdAt", direction: "desc" };
 
 export function TasksPage() {
+  const { t } = useTranslation();
   const { user, logout } = useAuth();
   const {
     tasks,
@@ -106,13 +109,18 @@ export function TasksPage() {
       >
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Task Manager
+            {t("tasks.appTitle")}
           </Typography>
+
+          <Box sx={{ mr: 2 }}>
+            <LanguageSwitcher />
+          </Box>
+
           <Typography variant="body2" color="text.secondary" sx={{ mr: 2 }}>
             {user?.name}
           </Typography>
           <Button color="inherit" onClick={logout}>
-            Log out
+            {t("tasks.logout")}
           </Button>
         </Toolbar>
       </AppBar>
@@ -129,7 +137,7 @@ export function TasksPage() {
           }}
         >
           <Typography variant="h4" component="h1">
-            Tasks
+            {t("tasks.pageTitle")}
           </Typography>
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
@@ -142,13 +150,13 @@ export function TasksPage() {
               size="small"
               aria-label="View mode"
             >
-              <ToggleButton value="list" aria-label="List view">
+              <ToggleButton value="list" aria-label={t("tasks.viewList")}>
                 <ViewListIcon fontSize="small" sx={{ mr: 1 }} />
-                List
+                {t("tasks.viewList")}
               </ToggleButton>
-              <ToggleButton value="board" aria-label="Board view">
+              <ToggleButton value="board" aria-label={t("tasks.viewBoard")}>
                 <ViewKanbanIcon fontSize="small" sx={{ mr: 1 }} />
-                Board
+                {t("tasks.viewBoard")}
               </ToggleButton>
             </ToggleButtonGroup>
 
@@ -157,12 +165,12 @@ export function TasksPage() {
               startIcon={<AddIcon />}
               onClick={openCreateForm}
             >
-              New Task
+              {t("tasks.newTask")}
             </Button>
           </Box>
         </Box>
 
-        {loading && <LoadingState message="Loading tasks…" />}
+        {loading && <LoadingState message={t("common.loading")} />}
 
         {!loading && error && (
           <ErrorState message={error} onRetry={loadTasks} />
@@ -170,8 +178,8 @@ export function TasksPage() {
 
         {!loading && !error && !hasTasksOverall && (
           <EmptyState
-            title="No tasks yet"
-            description="Click the “New Task” button in the top-right corner to create your first task."
+            title={t("tasks.noTasksTitle")}
+            description={t("tasks.noTasksDescription")}
           />
         )}
 
@@ -192,8 +200,8 @@ export function TasksPage() {
 
             {!hasFilteredResults && (
               <EmptyState
-                title="No matching tasks"
-                description="Try adjusting or clearing your filters to see more results."
+                title={t("tasks.noMatchesTitle")}
+                description={t("tasks.noMatchesDescription")}
               />
             )}
 
@@ -242,13 +250,12 @@ export function TasksPage() {
 
       <ConfirmDialog
         open={taskToDelete !== null}
-        title="Delete this task?"
+        title={t("confirmDialog.deleteTitle")}
         message={
           taskToDelete
-            ? `"${taskToDelete.title}" will be permanently deleted.`
+            ? t("confirmDialog.deleteMessage", { title: taskToDelete.title })
             : ""
         }
-        confirmLabel="Delete"
         onConfirm={handleDeleteConfirm}
         onCancel={() => setTaskToDelete(null)}
       />

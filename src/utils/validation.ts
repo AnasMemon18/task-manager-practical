@@ -28,24 +28,30 @@ export const createSignupSchema = (t: TFunction) =>
   });
 
 
-export const taskSchema = z.object({
-  title: z.string().min(1, "Title is required").max(100, "Title is too long"),
-  description: z.string().max(500, "Description is too long"),
-  status: z.enum(["Todo", "In Progress", "Done"]),
-  priority: z.enum(["Low", "Medium", "High"]),
-  dueDate: z
-    .string()
-    .min(1, "Due date is required")
-    .refine(
-      (value) => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        return new Date(value) >= today;
-      },
-      { message: "Due date cannot be in the past" },
-    ),
-});
+export const createTaskSchema = (t: TFunction) =>
+  z.object({
+    title: z
+      .string()
+      .min(1, t('taskForm.errorTitleRequired'))
+      .max(100, t('taskForm.errorTitleTooLong')),
+    description: z.string().max(500, t('taskForm.errorDescriptionTooLong')),
+    status: z.enum(['Todo', 'In Progress', 'Done']),
+    priority: z.enum(['Low', 'Medium', 'High']),
+    dueDate: z
+      .string()
+      .min(1, t('taskForm.errorDueDateRequired'))
+      .refine(
+        (value) => {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          return new Date(value) >= today;
+        },
+        { message: t('taskForm.errorDueDatePast') },
+      ),
+  });
+
 
 export type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;
 export type SignupFormValues = z.infer<ReturnType<typeof createSignupSchema>>;
-export type TaskFormValues = z.infer<typeof taskSchema>;
+export type TaskFormValues = z.infer<ReturnType<typeof createTaskSchema>>;
+
