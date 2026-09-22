@@ -5,6 +5,7 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "types": ["vite/client", "jest", "node"]
   },
   "include": ["src"]

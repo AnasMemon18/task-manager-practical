@@ -1,9 +1,16 @@
 import { z } from "zod";
+import type { TFunction } from 'i18next';
 
-export const loginSchema = z.object({
-  email: z.string().min(1, "Email is required").email("Enter a valid email"),
-  password: z.string().min(1, "Password is required"),
-});
+export const createLoginSchema = (t: TFunction) =>
+  z.object({
+    email: z
+      .string()
+      .min(1, t('auth.login.errorEmailRequired'))
+      .email(t('auth.login.errorEmailInvalid')),
+    password: z.string().min(1, t('auth.login.errorPasswordRequired')),
+  });
+
+
 
 export const signupSchema = z.object({
   name: z.string().min(1, "Name is required").max(50, "Name is too long"),
@@ -29,6 +36,6 @@ export const taskSchema = z.object({
     ),
 });
 
-export type LoginFormValues = z.infer<typeof loginSchema>;
+export type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;
 export type SignupFormValues = z.infer<typeof signupSchema>;
 export type TaskFormValues = z.infer<typeof taskSchema>;
