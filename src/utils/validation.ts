@@ -11,12 +11,22 @@ export const createLoginSchema = (t: TFunction) =>
   });
 
 
+export const createSignupSchema = (t: TFunction) =>
+  z.object({
+    name: z
+      .string()
+      .min(1, t('auth.signup.errorNameRequired'))
+      .max(50, t('auth.signup.errorNameTooLong')),
+    email: z
+      .string()
+      .min(1, t('auth.signup.errorEmailRequired'))
+      .email(t('auth.signup.errorEmailInvalid')),
+    password: z
+      .string()
+      .min(1, t('auth.signup.errorPasswordRequired'))
+      .min(6, t('auth.signup.errorPasswordTooShort')),
+  });
 
-export const signupSchema = z.object({
-  name: z.string().min(1, "Name is required").max(50, "Name is too long"),
-  email: z.string().min(1, "Email is required").email("Enter a valid email"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
 
 export const taskSchema = z.object({
   title: z.string().min(1, "Title is required").max(100, "Title is too long"),
@@ -37,5 +47,5 @@ export const taskSchema = z.object({
 });
 
 export type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;
-export type SignupFormValues = z.infer<typeof signupSchema>;
+export type SignupFormValues = z.infer<ReturnType<typeof createSignupSchema>>;
 export type TaskFormValues = z.infer<typeof taskSchema>;

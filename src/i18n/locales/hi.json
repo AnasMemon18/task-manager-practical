@@ -15,6 +15,26 @@
       "errorEmailInvalid": "मान्य ईमेल दर्ज करें",
       "errorPasswordRequired": "पासवर्ड आवश्यक है",
       "errorGeneric": "लॉगिन विफल रहा।"
+    },
+    "signup": {
+      "title": "अपना खाता बनाएँ",
+      "subtitle": "सेकंडों में अपने कार्यों को व्यवस्थित करना शुरू करें।",
+      "name": "नाम",
+      "email": "ईमेल",
+      "password": "पासवर्ड",
+      "showPassword": "पासवर्ड दिखाएँ",
+      "hidePassword": "पासवर्ड छिपाएँ",
+      "submit": "खाता बनाएँ",
+      "submitting": "खाता बन रहा है…",
+      "haveAccount": "पहले से खाता है?",
+      "signInLink": "साइन इन करें",
+      "errorNameRequired": "नाम आवश्यक है",
+      "errorNameTooLong": "नाम बहुत लंबा है",
+      "errorEmailRequired": "ईमेल आवश्यक है",
+      "errorEmailInvalid": "मान्य ईमेल दर्ज करें",
+      "errorPasswordRequired": "पासवर्ड आवश्यक है",
+      "errorPasswordTooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
+      "errorGeneric": "साइनअप विफल रहा।"
     }
   }
 }

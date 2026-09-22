@@ -15,6 +15,26 @@
       "errorEmailInvalid": "Enter a valid email",
       "errorPasswordRequired": "Password is required",
       "errorGeneric": "Login failed."
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Start organizing your tasks in seconds.",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "errorNameRequired": "Name is required",
+      "errorNameTooLong": "Name is too long",
+      "errorEmailRequired": "Email is required",
+      "errorEmailInvalid": "Enter a valid email",
+      "errorPasswordRequired": "Password is required",
+      "errorPasswordTooShort": "Password must be at least 6 characters",
+      "errorGeneric": "Signup failed."
     }
   }
 }
