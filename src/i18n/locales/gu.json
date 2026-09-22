@@ -1,0 +1,121 @@
+{
+  "auth": {
+    "login": {
+      "welcome": "ફરી સ્વાગત છે",
+      "subtitle": "તમારા કાર્યો ચાલુ રાખવા માટે સાઇન ઇન કરો.",
+      "email": "ઇમેઇલ",
+      "password": "પાસવર્ડ",
+      "showPassword": "પાસવર્ડ બતાવો",
+      "hidePassword": "પાસવર્ડ છુપાવો",
+      "submit": "સાઇન ઇન કરો",
+      "submitting": "સાઇન ઇન થઈ રહ્યું છે…",
+      "noAccount": "ખાતું નથી?",
+      "signUpLink": "સાઇન અપ કરો",
+      "errorEmailRequired": "ઇમેઇલ જરૂરી છે",
+      "errorEmailInvalid": "માન્ય ઇમેઇલ દાખલ કરો",
+      "errorPasswordRequired": "પાસવર્ડ જરૂરી છે",
+      "errorGeneric": "લોગિન નિષ્ફળ થયું."
+    },
+    "signup": {
+      "title": "તમારું ખાતું બનાવો",
+      "subtitle": "સેકંડોમાં તમારા કાર્યો ગોઠવવાનું શરૂ કરો.",
+      "name": "નામ",
+      "email": "ઇમેઇલ",
+      "password": "પાસવર્ડ",
+      "showPassword": "પાસવર્ડ બતાવો",
+      "hidePassword": "પાસવર્ડ છુપાવો",
+      "submit": "ખાતું બનાવો",
+      "submitting": "ખાતું બની રહ્યું છે…",
+      "haveAccount": "પહેલેથી ખાતું છે?",
+      "signInLink": "સાઇન ઇન કરો",
+      "errorNameRequired": "નામ જરૂરી છે",
+      "errorNameTooLong": "નામ ખૂબ લાંબું છે",
+      "errorEmailRequired": "ઇમેઇલ જરૂરી છે",
+      "errorEmailInvalid": "માન્ય ઇમેઇલ દાખલ કરો",
+      "errorPasswordRequired": "પાસવર્ડ જરૂરી છે",
+      "errorPasswordTooShort": "પાસવર્ડ ઓછામાં ઓછા 6 અક્ષરોનો હોવો જોઈએ",
+      "errorGeneric": "સાઇન અપ નિષ્ફળ થયું."
+    }
+  },
+  "tasks": {
+    "appTitle": "કાર્ય પ્રબંધક",
+    "pageTitle": "કાર્યો",
+    "logout": "લૉગ આઉટ",
+    "newTask": "નવું કાર્ય",
+    "viewList": "યાદી",
+    "viewBoard": "બોર્ડ",
+    "noTasksTitle": "હજી કોઈ કાર્ય નથી",
+    "noTasksDescription": "તમારું પ્રથમ કાર્ય બનાવવા માટે ઉપર-જમણા ખૂણામાં \"નવું કાર્ય\" બટન પર ક્લિક કરો.",
+    "noMatchesTitle": "કોઈ મેળ ખાતું કાર્ય નથી",
+    "noMatchesDescription": "વધુ પરિણામો જોવા માટે ફિલ્ટર સમાયોજિત કરો અથવા સાફ કરો.",
+    "loading": "લોડ થઈ રહ્યું છે…"
+  },
+  "taskForm": {
+    "createTitle": "નવું કાર્ય",
+    "editTitle": "કાર્ય સંપાદિત કરો",
+    "title": "શીર્ષક",
+    "description": "વર્ણન",
+    "status": "સ્થિતિ",
+    "priority": "પ્રાથમિકતા",
+    "dueDate": "નિયત તારીખ",
+    "cancel": "રદ કરો",
+    "create": "કાર્ય બનાવો",
+    "save": "ફેરફારો સાચવો",
+    "saving": "સાચવી રહ્યું છે…",
+    "errorTitleRequired": "શીર્ષક જરૂરી છે",
+    "errorTitleTooLong": "શીર્ષક ખૂબ લાંબું છે",
+    "errorDescriptionTooLong": "વર્ણન ખૂબ લાંબું છે",
+    "errorDueDateRequired": "નિયત તારીખ જરૂરી છે",
+    "errorDueDatePast": "નિયત તારીખ ભૂતકાળમાં ન હોઈ શકે"
+  },
+  "filters": {
+    "search": "શીર્ષક અથવા વર્ણન શોધો…",
+    "status": "સ્થિતિ",
+    "statusAll": "બધા",
+    "priority": "પ્રાથમિકતા",
+    "priorityAll": "બધા",
+    "dueFrom": "નિયત તારીખ થી",
+    "dueTo": "નિયત તારીખ સુધી",
+    "sortBy": "આના દ્વારા ગોઠવો",
+    "sortNewestFirst": "નવીનતમ પહેલા",
+    "sortOldestFirst": "જૂનામાં જૂનું પહેલા",
+    "sortDueSoonest": "નિયત તારીખ (સૌથી નજીક)",
+    "sortDueLatest": "નિયત તારીખ (સૌથી દૂર)",
+    "sortPriorityHigh": "પ્રાથમિકતા (ઊંચીથી નીચી)",
+    "sortPriorityLow": "પ્રાથમિકતા (નીચીથી ઊંચી)",
+    "sortTitleAZ": "શીર્ષક (A–Z)",
+    "clearAll": "બધું સાફ કરો",
+    "searchAriaLabel": "કાર્યો શોધો"
+  },
+  "pagination": {
+    "showing": "{{total}} {{unit}} માંથી {{start}}–{{end}} દર્શાવી રહ્યા છીએ",
+    "taskSingular": "કાર્ય",
+    "taskPlural": "કાર્યો",
+    "previousPage": "પાછલું પૃષ્ઠ",
+    "nextPage": "આગળનું પૃષ્ઠ",
+    "pageIndicator": "પૃષ્ઠ {{page}} / {{totalPages}}",
+    "perPage": "પ્રતિ પૃષ્ઠ",
+    "perPageOption": "{{size}} પ્રતિ પૃષ્ઠ"
+  },
+  "taskCard": {
+    "overdue": "મુદતવીતી — {{date}}",
+    "due": "નિયત {{date}}",
+    "editTooltip": "સંપાદિત કરો",
+    "deleteTooltip": "કાઢી નાખો",
+    "editAria": "કાર્ય સંપાદિત કરો: {{title}}",
+    "deleteAria": "કાર્ય કાઢી નાખો: {{title}}",
+    "priorityLabel": "{{priority}} પ્રાથમિકતા"
+  },
+  "confirmDialog": {
+    "deleteTitle": "આ કાર્ય કાઢી નાખવું છે?",
+    "deleteMessage": "\"{{title}}\" કાયમ માટે કાઢી નાખવામાં આવશે.",
+    "confirmDelete": "કાઢી નાખો",
+    "cancel": "રદ કરો"
+  },
+  "common": {
+    "loading": "લોડ થઈ રહ્યું છે…",
+    "errorTitle": "કંઈક ખોટું થયું",
+    "retry": "ફરી પ્રયાસ કરો",
+    "dropTaskHere": "અહીં કાર્ય મૂકો"
+  }
+}

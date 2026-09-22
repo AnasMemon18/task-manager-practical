@@ -1,0 +1,121 @@
+{
+  "auth": {
+    "login": {
+      "welcome": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesión para continuar con tus tareas.",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña",
+      "submit": "Iniciar sesión",
+      "submitting": "Iniciando sesión…",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUpLink": "Regístrate",
+      "errorEmailRequired": "El correo es obligatorio",
+      "errorEmailInvalid": "Ingresa un correo válido",
+      "errorPasswordRequired": "La contraseña es obligatoria",
+      "errorGeneric": "Error al iniciar sesión."
+    },
+    "signup": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Empieza a organizar tus tareas en segundos.",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "showPassword": "Mostrar contraseña",
+      "hidePassword": "Ocultar contraseña",
+      "submit": "Crear cuenta",
+      "submitting": "Creando cuenta…",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "signInLink": "Inicia sesión",
+      "errorNameRequired": "El nombre es obligatorio",
+      "errorNameTooLong": "El nombre es demasiado largo",
+      "errorEmailRequired": "El correo es obligatorio",
+      "errorEmailInvalid": "Ingresa un correo válido",
+      "errorPasswordRequired": "La contraseña es obligatoria",
+      "errorPasswordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "errorGeneric": "Error al registrarse."
+    }
+  },
+  "tasks": {
+    "appTitle": "Gestor de tareas",
+    "pageTitle": "Tareas",
+    "logout": "Cerrar sesión",
+    "newTask": "Nueva tarea",
+    "viewList": "Lista",
+    "viewBoard": "Tablero",
+    "noTasksTitle": "Aún no hay tareas",
+    "noTasksDescription": "Haz clic en el botón \"Nueva tarea\" en la esquina superior derecha para crear tu primera tarea.",
+    "noMatchesTitle": "No hay tareas coincidentes",
+    "noMatchesDescription": "Intenta ajustar o limpiar los filtros para ver más resultados.",
+    "loading": "Cargando…"
+  },
+  "taskForm": {
+    "createTitle": "Nueva tarea",
+    "editTitle": "Editar tarea",
+    "title": "Título",
+    "description": "Descripción",
+    "status": "Estado",
+    "priority": "Prioridad",
+    "dueDate": "Fecha de vencimiento",
+    "cancel": "Cancelar",
+    "create": "Crear tarea",
+    "save": "Guardar cambios",
+    "saving": "Guardando…",
+    "errorTitleRequired": "El título es obligatorio",
+    "errorTitleTooLong": "El título es demasiado largo",
+    "errorDescriptionTooLong": "La descripción es demasiado larga",
+    "errorDueDateRequired": "La fecha de vencimiento es obligatoria",
+    "errorDueDatePast": "La fecha de vencimiento no puede estar en el pasado"
+  },
+  "filters": {
+    "search": "Buscar título o descripción…",
+    "status": "Estado",
+    "statusAll": "Todos",
+    "priority": "Prioridad",
+    "priorityAll": "Todas",
+    "dueFrom": "Vence desde",
+    "dueTo": "Vence hasta",
+    "sortBy": "Ordenar por",
+    "sortNewestFirst": "Más recientes primero",
+    "sortOldestFirst": "Más antiguas primero",
+    "sortDueSoonest": "Fecha de vencimiento (más próxima)",
+    "sortDueLatest": "Fecha de vencimiento (más lejana)",
+    "sortPriorityHigh": "Prioridad (mayor a menor)",
+    "sortPriorityLow": "Prioridad (menor a mayor)",
+    "sortTitleAZ": "Título (A–Z)",
+    "clearAll": "Limpiar todo",
+    "searchAriaLabel": "Buscar tareas"
+  },
+  "pagination": {
+    "showing": "Mostrando {{start}}–{{end}} de {{total}} {{unit}}",
+    "taskSingular": "tarea",
+    "taskPlural": "tareas",
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageIndicator": "Página {{page}} de {{totalPages}}",
+    "perPage": "Por página",
+    "perPageOption": "{{size}} por página"
+  },
+  "taskCard": {
+    "overdue": "Vencida — {{date}}",
+    "due": "Vence {{date}}",
+    "editTooltip": "Editar",
+    "deleteTooltip": "Eliminar",
+    "editAria": "Editar tarea: {{title}}",
+    "deleteAria": "Eliminar tarea: {{title}}",
+    "priorityLabel": "Prioridad {{priority}}"
+  },
+  "confirmDialog": {
+    "deleteTitle": "¿Eliminar esta tarea?",
+    "deleteMessage": "\"{{title}}\" se eliminará permanentemente.",
+    "confirmDelete": "Eliminar",
+    "cancel": "Cancelar"
+  },
+  "common": {
+    "loading": "Cargando…",
+    "errorTitle": "Algo salió mal",
+    "retry": "Reintentar",
+    "dropTaskHere": "Suelta una tarea aquí"
+  }
+}
