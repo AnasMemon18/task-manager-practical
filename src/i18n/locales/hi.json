@@ -1,0 +1,20 @@
+{
+  "auth": {
+    "login": {
+      "welcome": "फिर से स्वागत है",
+      "subtitle": "अपने कार्यों को जारी रखने के लिए साइन इन करें।",
+      "email": "ईमेल",
+      "password": "पासवर्ड",
+      "showPassword": "पासवर्ड दिखाएँ",
+      "hidePassword": "पासवर्ड छिपाएँ",
+      "submit": "साइन इन करें",
+      "submitting": "साइन इन हो रहा है…",
+      "noAccount": "खाता नहीं है?",
+      "signUpLink": "साइन अप करें",
+      "errorEmailRequired": "ईमेल आवश्यक है",
+      "errorEmailInvalid": "मान्य ईमेल दर्ज करें",
+      "errorPasswordRequired": "पासवर्ड आवश्यक है",
+      "errorGeneric": "लॉगिन विफल रहा।"
+    }
+  }
+}
